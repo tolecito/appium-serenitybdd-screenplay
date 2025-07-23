@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.automation.appium'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    serenityVersion = '3.6.21'
+    junitPlatformVersion = '1.10.0'
+}
+
+dependencies {
+    //Serenity Core
+    testImplementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
+
+    //Appium Client
+    //testImplementation "io.appium:java-client:9.1.0"
+    testImplementation 'io.appium:java-client:8.5.1'
+
+    // Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.14.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.14.0'
+    testImplementation 'net.serenity-bdd:serenity-cucumber:3.6.21'
+
+    // JUnit
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.10.0"
+
+}
+
+test {
+    //useJUnitPlatform()
+    systemProperties = System.properties
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
