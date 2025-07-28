@@ -1,0 +1,13 @@
+FUNCINALIDADES PARA AUTOMATIZAR:
+- Cerrar seción
+- Redirigir a una página web random desde WebView Selection
+- Obtener geolocalización
+- Hacer un dibujo en la pantalla, limpiar y guardar
+- Agregar productos al carrito con una vista de productos en cuadrícula
+- Agregar productos al carrito con una vista de productos en lista
+- Remover productos del carrito y continuar comprando
+- Ordernar productos por nombre ascendente
+- Ordernar productos por nombre descendente
+- Ordernar productos por precio ascendente
+- Ordernar productos por precio descendente
+- Agregar infomración del comprador y finalizar compra
