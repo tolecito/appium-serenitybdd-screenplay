@@ -7,5 +7,7 @@ import net.serenitybdd.screenplay.targets.Target;
 public class ProductsScreen
 {
     public static final Target PRODUCTS_LABEL = Target.the("Titulo Pantalla")
-            .located(By.xpath("//android.widget.TextView[@text=\"PRODUCTS\"]"));
+            //.located(By.xpath("//android.widget.TextView[@text=\"PRODUCTS\"]"));
+            .located(AppiumBy.androidUIAutomator("new UiSelector().text(\"PRODUCTS\")"));
+
 }

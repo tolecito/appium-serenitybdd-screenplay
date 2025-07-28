@@ -13,6 +13,11 @@ public class LoginScreen {
     public static final Target LOGIN_BUTTON = Target.the("Boton Login")
             .located(AppiumBy.accessibilityId("test-LOGIN"));
 
+    public static final Target ERROR_LABEL_1 = Target.the("Texto Error Login")
+            .located(AppiumBy.xpath("//android.widget.TextView[@text=\"Sorry, this user has been locked out.\"]"));
+
+    public static final Target ERROR_LABEL_2 = Target.the("Texto Error Login")
+            .located(AppiumBy.xpath("//android.widget.TextView[@text=\"Username and password do not match any user in this service.\"]"));
     /*public static final Target WELCOME_MESSAGE = Target.the("mensaje de bienvenida")
             .located(By.id("com.tuapp:id/welcome_text"));*/
 }

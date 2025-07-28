@@ -24,7 +24,9 @@ public class LoginTask implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
+            TapElement.on(LoginScreen.USERNAME_FIELD),
             SendKeys.of(username).into(LoginScreen.USERNAME_FIELD),
+            TapElement.on(LoginScreen.PASSWORD_FIELD),
             SendKeys.of(password).into(LoginScreen.PASSWORD_FIELD),
             TapElement.on(LoginScreen.LOGIN_BUTTON)
         );

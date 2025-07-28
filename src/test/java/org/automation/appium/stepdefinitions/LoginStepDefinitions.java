@@ -9,6 +9,9 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 import static net.serenitybdd.screenplay.waits.WaitUntil.the;
 import static org.automation.appium.questions.ValidationMessage.of;
 import static org.automation.appium.screens.ProductsScreen.PRODUCTS_LABEL;
+import static org.automation.appium.screens.LoginScreen.ERROR_LABEL_1;
+import static org.automation.appium.screens.LoginScreen.ERROR_LABEL_2;
+
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.automation.appium.tasks.LoginTask.withCredentials;
@@ -22,14 +25,14 @@ public class LoginStepDefinitions {
         OnStage.theActorCalled("usuario");
     }
 
-    @Cuando("el usuario se loguea con {string} y {string}")
+    @Cuando("el usuario se loguea con las credenciales {string} y {string}")
     public void elUsuarioSeLoguea(String user, String password) {
         OnStage.theActorInTheSpotlight().attemptsTo(
                 withCredentials(user, password)
         );
     }
 
-    @Entonces("debería ver el mensaje {string}")
+    @Entonces("deberia ver el mensaje {string}")
     public void deberiaVerMensaje(String mensajeEsperado) {
         // Validar que el mensaje sea visible
         /*OnStage.theActorInTheSpotlight().should(
@@ -43,6 +46,32 @@ public class LoginStepDefinitions {
         System.out.println("Mensaje obtenido: " + mensajeObtenido);
         OnStage.theActorInTheSpotlight().should(
                 seeThat(of(PRODUCTS_LABEL), containsString(mensajeEsperado))
+        );
+    }
+
+    @Entonces("deberia ver el mensaje de error {string} por usuario bloqueado")
+    public void deberiaVerMensajeErrorUsuarioBloqueado(String mensajeEsperado) {
+        // Validar que el mensaje sea visible
+        /*OnStage.theActorInTheSpotlight().should(
+                //seeThat(ValidationMessage.isVisible(), containsString(mensajeEsperado))
+                seeThat(of(PRODUCTS_LABEL), containsString(mensajeEsperado))
+        );*/
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                the(ERROR_LABEL_1, isVisible()).forNoMoreThan(10).seconds()
+        );
+        String mensajeObtenido = of(ERROR_LABEL_1).answeredBy(OnStage.theActorInTheSpotlight());
+        System.out.println("Mensaje obtenido: " + mensajeObtenido);
+        OnStage.theActorInTheSpotlight().should(
+                seeThat(of(ERROR_LABEL_1), containsString(mensajeEsperado))
+        );
+    }
+
+    @Entonces("deberia ver el mensaje de error {string} por credenciales incorrectas")
+    public void deberiaVerMensajeErrorCredencialesIncorrectas(String mensajeEsperado) {
+        // Validar que el mensaje sea visible
+        OnStage.theActorInTheSpotlight().should(
+                //seeThat(ValidationMessage.isVisible(), containsString(mensajeEsperado))
+                seeThat(of(ERROR_LABEL_2), containsString(mensajeEsperado))
         );
     }
 }

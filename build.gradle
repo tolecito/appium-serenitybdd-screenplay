@@ -1,45 +1,68 @@
-plugins {
-    id 'java'
+defaultTasks 'clean', 'test', 'aggregate'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:3.3.10"
+    }
 }
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.serenity-gradle-plugin'
 
 group = 'org.automation.appium'
 version = '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
 ext {
-    serenityVersion = '3.6.21'
-    junitPlatformVersion = '1.10.0'
+    serenityVersion = '3.3.10'
+    junitVersion = '4.13.2'
+    cucumberVersion = '7.11.2'
+    appiumVersion = '8.5.1'
 }
 
 dependencies {
-    //Serenity Core
+    implementation "ch.qos.logback:logback-classic:1.2.10"
+
+    // Serenity
     testImplementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
     testImplementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
     testImplementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-ensure:${serenityVersion}"
 
-    //Appium Client
-    //testImplementation "io.appium:java-client:9.1.0"
-    testImplementation 'io.appium:java-client:8.5.1'
+    // Appium
+    testImplementation "io.appium:java-client:${appiumVersion}"
+
+    // JUnit 4
+    testImplementation "junit:junit:${junitVersion}"
 
     // Cucumber
-    testImplementation 'io.cucumber:cucumber-java:7.14.0'
-    testImplementation 'io.cucumber:cucumber-junit:7.14.0'
-    testImplementation 'net.serenity-bdd:serenity-cucumber:3.6.21'
-
-    // JUnit
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.10.0"
-
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
 }
 
 test {
-    //useJUnitPlatform()
-    systemProperties = System.properties
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+serenity {
+    testRoot = "org.automation.appium" // Asegúrate de que esto sea tu paquete raíz real
+    requirementsDir = "src/test/resources/features"
 }
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)
