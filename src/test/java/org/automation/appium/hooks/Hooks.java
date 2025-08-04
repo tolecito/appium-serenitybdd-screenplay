@@ -16,10 +16,9 @@ public class Hooks {
     public void setTheStage() {
         System.out.println("Inicializando el escenario de Screenplay...");
         OnStage.setTheStage(new OnlineCast());
-        //OnStage.theActorCalled("John Wick");
+        //OnStage.theActorCalled("usuario");
         try {
             AppiumDriver driver = AppiumDriverFactory.getDriver();
-
             // Registrar el driver como habilidad para el actor principal
             OnStage.theActorCalled("usuario").can(BrowseTheWeb.with(driver));
 

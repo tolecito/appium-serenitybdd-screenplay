@@ -1,4 +1,2 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Inicio de sesión en la app móvil","Login exitoso","SUCCESS","2025-07-27T21:11:47.6333035-05:00[America/Lima]","0.0","31.03"
-"Inicio de sesión en la app móvil","Login fallido por usuario bloqueado","SUCCESS","2025-07-27T21:12:18.6722527-05:00[America/Lima]","0.0","15.09"
-"Inicio de sesión en la app móvil","Login fallido por credenciales incorrectas","SUCCESS","2025-07-27T21:12:33.7734877-05:00[America/Lima]","0.0","14.45"
+"Seleccion de productos en la app móvil","Seleccionar un producto y verificar su precio","FAILURE","2025-07-29T03:36:53.0993245-05:00[America/Lima]","0.0","42.22"

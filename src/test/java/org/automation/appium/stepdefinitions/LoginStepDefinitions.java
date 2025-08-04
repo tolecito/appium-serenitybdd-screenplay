@@ -1,8 +1,11 @@
 package org.automation.appium.stepdefinitions;
 
-import io.cucumber.java.es.Cuando;
-import io.cucumber.java.es.Dado;
-import io.cucumber.java.es.Entonces;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+//import io.cucumber.java.es.Cuando;
+//import io.cucumber.java.es.Dado;
+//import io.cucumber.java.es.Entonces;
 import net.serenitybdd.screenplay.actors.OnStage;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
@@ -12,27 +15,26 @@ import static org.automation.appium.screens.ProductsScreen.PRODUCTS_LABEL;
 import static org.automation.appium.screens.LoginScreen.ERROR_LABEL_1;
 import static org.automation.appium.screens.LoginScreen.ERROR_LABEL_2;
 
-
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.automation.appium.tasks.LoginTask.withCredentials;
 import static org.hamcrest.Matchers.containsString;
 
 public class LoginStepDefinitions {
 
-    @Dado("que el usuario abre la app")
+    @Given("que el usuario abre la app")
     public void queElUsuarioAbreLaApp() {
         // Implementa aquí la lógica para abrir la app
         OnStage.theActorCalled("usuario");
     }
 
-    @Cuando("el usuario se loguea con las credenciales {string} y {string}")
+    @When("el usuario inicia sesion con las credenciales {string} y {string}")
     public void elUsuarioSeLoguea(String user, String password) {
         OnStage.theActorInTheSpotlight().attemptsTo(
                 withCredentials(user, password)
         );
     }
 
-    @Entonces("deberia ver el mensaje {string}")
+    @Then("deberia ver el mensaje {string}")
     public void deberiaVerMensaje(String mensajeEsperado) {
         // Validar que el mensaje sea visible
         /*OnStage.theActorInTheSpotlight().should(
@@ -49,7 +51,7 @@ public class LoginStepDefinitions {
         );
     }
 
-    @Entonces("deberia ver el mensaje de error {string} por usuario bloqueado")
+    @Then("deberia ver el mensaje de error {string} por usuario bloqueado")
     public void deberiaVerMensajeErrorUsuarioBloqueado(String mensajeEsperado) {
         // Validar que el mensaje sea visible
         /*OnStage.theActorInTheSpotlight().should(
@@ -66,7 +68,7 @@ public class LoginStepDefinitions {
         );
     }
 
-    @Entonces("deberia ver el mensaje de error {string} por credenciales incorrectas")
+    @Then("deberia ver el mensaje de error {string} por credenciales incorrectas")
     public void deberiaVerMensajeErrorCredencialesIncorrectas(String mensajeEsperado) {
         // Validar que el mensaje sea visible
         OnStage.theActorInTheSpotlight().should(

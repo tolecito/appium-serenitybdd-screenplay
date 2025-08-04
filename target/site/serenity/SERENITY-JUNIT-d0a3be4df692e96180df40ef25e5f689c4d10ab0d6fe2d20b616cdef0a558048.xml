@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Inicio de sesión en la app móvil" skipped="0" tests="4" time="60.56" timestamp="2025-07-27 09:11:47"><testcase name="Login exitoso"/><testcase name="Login fallido por usuario bloqueado"/><testcase name="Login fallido por credenciales incorrectas"/></testsuite>
