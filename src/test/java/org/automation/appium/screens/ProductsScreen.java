@@ -41,7 +41,7 @@ public class ProductsScreen
             .located(AppiumBy.accessibilityId("test-PRODUCTS"));
 
     //NOMBRE PRODUCTOS
-    public static final Target PRODUCT_1 = Target.the("Texto Producto 1")
+    /*public static final Target PRODUCT_1 = Target.the("Texto Producto 1")
             .located(AppiumBy.androidUIAutomator("new UiSelector().text(\"Sauce Labs Backpack\")"));
 
     public static final Target PRODUCT_2 = Target.the("Texto Producto 2")
@@ -57,7 +57,7 @@ public class ProductsScreen
             .located(AppiumBy.androidUIAutomator("new UiSelector().text(\"Sauce Labs Onesie\")"));
 
     public static final Target PRODUCT_6 = Target.the("Texto Producto 6")
-            .located(AppiumBy.androidUIAutomator("new UiSelector().text(\"Test.allTheThings() T-Shirt (Red)\")"));
+            .located(AppiumBy.androidUIAutomator("new UiSelector().text(\"Test.allTheThings() T-Shirt (Red)\")"));*/
 
     //PRECIO PRODUCTOS
     public static final Target PRICE_1 = Target.the("Texto Precio 1")

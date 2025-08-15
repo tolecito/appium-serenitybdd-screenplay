@@ -13,6 +13,7 @@ Feature: Inicio de sesión en la app móvil
     | problem_user                            | secret_sauce |
 
 
+    @LoginUsuarioBloqueado
   Scenario Outline: Inicio de sesión fallido por usuario bloqueado
     When el usuario inicia sesion con las credenciales "<username>" y "<password>"
     Then deberia ver el mensaje de error "Sorry, this user has been locked out." por usuario bloqueado

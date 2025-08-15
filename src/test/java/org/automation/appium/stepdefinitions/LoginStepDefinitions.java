@@ -36,11 +36,6 @@ public class LoginStepDefinitions {
 
     @Then("deberia ver el mensaje {string}")
     public void deberiaVerMensaje(String mensajeEsperado) {
-        // Validar que el mensaje sea visible
-        /*OnStage.theActorInTheSpotlight().should(
-                //seeThat(ValidationMessage.isVisible(), containsString(mensajeEsperado))
-                seeThat(of(PRODUCTS_LABEL), containsString(mensajeEsperado))
-        );*/
         OnStage.theActorInTheSpotlight().attemptsTo(
                 the(PRODUCTS_LABEL, isVisible()).forNoMoreThan(20).seconds()
         );

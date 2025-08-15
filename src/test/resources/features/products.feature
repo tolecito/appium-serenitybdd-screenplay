@@ -5,8 +5,9 @@ Feature: Seleccion de productos en la app móvil
 
   @SeleccionarProductos
   Scenario Outline: Seleccionar un producto y verificar su precio
-    When navega hacia el producto "<NombreProducto>"
-    Then deberia ver que el precio del producto es "<Precio>"
+    When navega hacia el producto "<NombreProducto>" y se da click en el
+    Then deberia ver el nombre del producto "<NombreProducto>"
+    And deberia ver que el precio del producto es "<Precio>"
 
     Examples:
         | NombreProducto            | Precio |
@@ -14,4 +15,5 @@ Feature: Seleccion de productos en la app móvil
         #| Sauce Labs Bike Light     | $9.99  |
         #| Sauce Labs Bolt T-Shirt   | $15.99 |
         #| Sauce Labs Fleece Jacket  | $49.99 |
-        | Sauce Labs Onesie         | $7.99  |
+        #| Sauce Labs Onesie         | $7.99  |
+        | Sauce Labs Onesie         | 49.99  |

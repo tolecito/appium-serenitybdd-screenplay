@@ -34,13 +34,24 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 public class ScrollToText implements Task {
 
     private final String text;
+    private final Target locator;
 
     public ScrollToText(String text) {
         this.text = text;
+        this.locator = null;
     }
+
+    /*public ScrollToText(Target locator) {
+        this.text = locator.toString();
+        this.locator = locator;
+    }*/
 
     public static ScrollToText untilVisible(String text) {
         return instrumented(ScrollToText.class, text);
+    }
+
+    public static ScrollToText untilVisibleTarget(Target target) {
+        return instrumented(ScrollToText.class, target);
     }
 
     @Override
@@ -48,13 +59,14 @@ public class ScrollToText implements Task {
         AndroidDriver driver = (AndroidDriver) BrowseTheWeb.as(actor).getDriver();
 
         boolean found = false;
-        int maxScrolls = 5;
+        int maxScrolls = 20; // Limite de scrolls para evitar bucles infinitos
 
         while (!found && maxScrolls-- > 0) {
             try {
                 driver.findElement(AppiumBy.androidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true))" +
                                 ".scrollIntoView(new UiSelector().text(\"" + text + "\"))"));
+
                 found = true;
             } catch (NoSuchElementException e) {
                 // Optional: puedes hacer un swipe manual si el scrollable no sirve
