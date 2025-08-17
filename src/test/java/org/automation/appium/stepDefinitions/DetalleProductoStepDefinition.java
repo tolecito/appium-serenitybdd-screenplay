@@ -1,4 +1,4 @@
-package org.automation.appium.stepdefinitions;
+package org.automation.appium.stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -6,7 +6,7 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static org.automation.appium.questions.ValidationMessage.of;
+import static org.automation.appium.questions.common.ValidationText.of;
 
 import org.automation.appium.screens.ProductsScreen;
 
@@ -26,8 +26,6 @@ public class DetalleProductoStepDefinition {
 
     @Then("deberia ver el nombre del producto {string}")
     public void deberiaVerProducto(String nombreProducto) {
-        String mensajeObtenido = of(PRODUCTS_LABEL).answeredBy(OnStage.theActorInTheSpotlight());
-        System.out.println("Mensaje obtenido: " + mensajeObtenido);
         OnStage.theActorInTheSpotlight().should(
                 seeThat(of(PRODUCTS_LABEL), containsString(mensajeEsperado))
         );
