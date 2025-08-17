@@ -1,9 +1,8 @@
-package org.automation.appium.tasks;
+package org.automation.appium.tasks.common;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.targets.Target;
-import org.automation.appium.interactions.ScrollToText;
 import org.automation.appium.interactions.TapElement;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;

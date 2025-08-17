@@ -6,9 +6,9 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import org.automation.appium.questions.productDetails.ProductDetailsMessages;
-import org.automation.appium.screens.ProductsScreen;
-import org.automation.appium.tasks.SearchFor;
-import org.automation.appium.tasks.SelecItem;
+import org.automation.appium.tasks.common.SearchFor;
+import org.automation.appium.tasks.products.SelectProduct;
+
 import static org.hamcrest.Matchers.containsString;
 
 
@@ -18,7 +18,7 @@ public class ProductsExplorationStepDefinition {
     public void navegaHaciaElProducto(String nombreProducto) {
         OnStage.theActorInTheSpotlight().attemptsTo(
                 SearchFor.item(nombreProducto),
-                SelecItem.called(ProductsScreen.addLocator(nombreProducto))
+                SelectProduct.called(nombreProducto)
         );
     }
 
@@ -30,20 +30,20 @@ public class ProductsExplorationStepDefinition {
     }
 
     @And("deberia ver que el precio del producto es {string}")
-    public void deberiaVerPrecioProducto(String precio) {
+    public void deberiaVerPrecioProducto(String precioProducto) {
         OnStage.theActorInTheSpotlight().attemptsTo(
-                SearchFor.item(precio)
+                SearchFor.item(precioProducto)
         );
 
         OnStage.theActorInTheSpotlight().should(
-                seeThat(ProductDetailsMessages.productPrice(precio), containsString(precio))
+                seeThat(ProductDetailsMessages.productPrice(precioProducto), containsString(precioProducto))
         );
     }
 
     @And("deberia ver que la descripcion del producto dice {string}")
-    public void deberiaVerDescripcionProducto(String descripcion) {
+    public void deberiaVerDescripcionProducto(String descripcionProducto) {
         OnStage.theActorInTheSpotlight().should(
-                seeThat(ProductDetailsMessages.productDescription(descripcion), containsString(descripcion))
+                seeThat(ProductDetailsMessages.productDescription(descripcionProducto), containsString(descripcionProducto))
         );
     }
 }

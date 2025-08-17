@@ -7,7 +7,7 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import org.automation.appium.questions.login.LoginErrorMessages;
 import org.automation.appium.questions.products.ProductsMessages;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static org.automation.appium.tasks.LoginTask.withCredentials;
+import static org.automation.appium.tasks.login.LoginTask.withCredentials;
 import static org.hamcrest.Matchers.containsString;
 
 public class LoginStepDefinitions {

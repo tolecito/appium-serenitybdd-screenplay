@@ -1,4 +1,4 @@
-package org.automation.appium.tasks;
+package org.automation.appium.tasks.login;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;

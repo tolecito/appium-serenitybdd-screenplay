@@ -1,10 +1,8 @@
-package org.automation.appium.tasks;
+package org.automation.appium.tasks.common;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.targets.Target;
-import org.automation.appium.interactions.ScrollToText;
-import org.automation.appium.interactions.TapElement;
+import org.automation.appium.interactions.ScrollToItem;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
@@ -24,7 +22,7 @@ public class SearchFor implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 //TapElement.on(ProductsScreen.SCROLL_CONTAINER), //Se da click al contenedor de scroll
-                ScrollToText.untilVisible(this.texto)
+                ScrollToItem.untilVisible(this.texto)
         );
 
     }

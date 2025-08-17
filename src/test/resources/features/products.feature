@@ -10,9 +10,10 @@ Feature: Seleccion de productos en la app móvil
     And deberia ver que el precio del producto es "<Precio>"
 
     Examples:
-        | NombreProducto            | Precio |
-        #| Sauce Labs Backpack       | $29.99 |
-        #| Sauce Labs Bike Light     | $9.99  |
-        #| Sauce Labs Bolt T-Shirt   | $15.99 |
-        | Sauce Labs Fleece Jacket  | $49.99 |
-        | Sauce Labs Onesie         | $7.99  |
+        | NombreProducto                    | Precio |
+        | Sauce Labs Backpack               | $29.99 |
+        | Sauce Labs Bike Light             | $9.99  |
+        | Sauce Labs Bolt T-Shirt           | $15.99 |
+        | Sauce Labs Fleece Jacket          | $49.99 |
+        | Sauce Labs Onesie                 | $7.99  |
+        | Test.allTheThings() T-Shirt (Red) | $15.99 |
