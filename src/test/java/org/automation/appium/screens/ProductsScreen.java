@@ -5,11 +5,9 @@ import net.serenitybdd.screenplay.targets.Target;
 
 public class ProductsScreen
 {
-    public static Target asignarLocalizador(String nombreProducto) {
+    public static Target addLocator(String nombreProducto) {
         NAME_PRODUCT_LABEL = Target.the("Texto Nombre Producto")
                 .located(AppiumBy.androidUIAutomator("new UiSelector().text(\"" + nombreProducto + "\")"));
-
-        System.out.println("Localizador asignado para el producto: " + NAME_PRODUCT_LABEL);
 
         return NAME_PRODUCT_LABEL;
     }
