@@ -17,7 +17,7 @@ public class AppiumDriverFactory {
         capabilities.setCapability("platformVersion", "11.0");
         capabilities.setCapability("deviceName", "emulator-5554");
         //capabilities.setCapability("app", System.getProperty("user.dir") + "/apps/app.apk");
-        //capabilities.setCapability("app", "D:\\PROYECTOS\\AUTOMATIZACION\\appium-serenitybdd-screenplay\\src\\test\\resources\\Android.SauceLabs.Mobile.Sample.app.2.7.1.apk");
+        capabilities.setCapability("app", "src/test/resources/Android.SauceLabs.Mobile.Sample.app.2.7.1.apk");
         capabilities.setCapability("newCommandTimeout", "1000");
         capabilities.setCapability("appPackage", "com.swaglabsmobileapp");
         capabilities.setCapability("appActivity", "com.swaglabsmobileapp.MainActivity");
