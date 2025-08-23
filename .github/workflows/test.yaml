@@ -18,7 +18,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
-          target: android-30
+          target: google_apis
           arch: x86
           profile: pixel
           script: ./gradlew clean test -Dcucumber.filter.tags="@LoginCorrecto"
