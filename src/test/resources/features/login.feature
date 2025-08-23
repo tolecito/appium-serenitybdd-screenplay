@@ -3,6 +3,7 @@ Feature: Inicio de sesión en la app móvil
   Background:
     Given que el usuario abre la app
 
+    @LoginCorrecto
   Scenario Outline: Inicio de sesión exitoso
     When el usuario inicia sesion con las credenciales "<username>" y "<password>"
     Then deberia ver el mensaje "PRODUCTS"
