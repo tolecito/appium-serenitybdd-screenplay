@@ -3,10 +3,11 @@ defaultTasks 'clean', 'test', 'aggregate'
 buildscript {
     repositories {
         mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
+        gradlePluginPortal()
     }
+
     dependencies {
-        classpath "net.serenity-bdd:serenity-gradle-plugin:3.3.10"
+        classpath "net.serenity-bdd:serenity-gradle-plugin:5.3.9"
     }
 }
 
@@ -18,22 +19,25 @@ apply plugin: 'net.serenity-bdd.serenity-gradle-plugin'
 group = 'org.automation.appium'
 version = '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 ext {
-    serenityVersion = '3.3.10'
-    junitVersion = '4.13.2'
-    cucumberVersion = '7.11.2'
-    appiumVersion = '8.5.1'
+    serenityVersion = '5.3.9'
+    cucumberVersion = '7.34.2'
+    appiumVersion = '10.0.0'
 }
 
 dependencies {
-    implementation "ch.qos.logback:logback-classic:1.2.10"
+
+    implementation "ch.qos.logback:logback-classic:1.5.18"
 
     // Serenity
     testImplementation "net.serenity-bdd:serenity-core:${serenityVersion}"
@@ -45,21 +49,21 @@ dependencies {
     // Appium
     testImplementation "io.appium:java-client:${appiumVersion}"
 
-    // JUnit 4
-    testImplementation "junit:junit:${junitVersion}"
-
     // Cucumber
     testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
-    testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}"
+    testImplementation "org.junit.platform:junit-platform-suite:1.12.2"
 }
 
 test {
+    useJUnitPlatform()
+
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
 }
 
 serenity {
-    testRoot = "org.automation.appium" // Asegúrate de que esto sea tu paquete raíz real
+    testRoot = "org.automation.appium"
     requirementsDir = "src/test/resources/features"
 }
 

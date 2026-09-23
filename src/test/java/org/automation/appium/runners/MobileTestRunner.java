@@ -1,17 +1,23 @@
 package org.automation.appium.runners;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import net.serenitybdd.cucumber.CucumberWithSerenity;
-import org.junit.runner.RunWith;
 
-@RunWith(CucumberWithSerenity.class)
-@CucumberOptions(
-        features = "src/test/resources/features",
-        glue = "org.automation.appium",
-        plugin = {"pretty", "summary", "html:target/cucumber-reports.html"},
-        snippets = CucumberOptions.SnippetType.CAMELCASE,
-        monochrome = true
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
+
+import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
+import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
+
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("features")
+@ConfigurationParameter(
+        key = GLUE_PROPERTY_NAME,
+        value = "org.automation.appium"
 )
-public class MobileTestRunner {}
-
-
+@ConfigurationParameter(
+        key = PLUGIN_PROPERTY_NAME,
+        value = "net.serenitybdd.cucumber.core.plugin.SerenityReporterParallel"
+)
+public class MobileTestRunner {
+}

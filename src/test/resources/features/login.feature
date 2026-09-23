@@ -3,7 +3,7 @@ Feature: Inicio de sesión en la app móvil
   Background:
     Given que el usuario abre la app
 
-    @LoginCorrecto
+    @LoginCorrecto1
   Scenario Outline: Inicio de sesión exitoso
     When el usuario inicia sesion con las credenciales "<username>" y "<password>"
     Then deberia ver el mensaje "PRODUCTS"
@@ -12,6 +12,11 @@ Feature: Inicio de sesión en la app móvil
     | username                                | password     |
     | standard_user                           | secret_sauce |
     | problem_user                            | secret_sauce |
+
+  @LoginCorrecto
+  Scenario: Inicio de sesión exitoso
+    When el usuario inicia sesion con las credenciales "standard_user" y "secret_sauce"
+    Then deberia ver el mensaje "PRODUCTS"
 
 
     @LoginUsuarioBloqueado

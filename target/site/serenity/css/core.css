@@ -524,6 +524,15 @@ i.tag {
     color: #FF6108;
 }
 
+.failing-step {
+    color: #c0392b;
+    font-weight: 500;
+    background-color: #fdecea;
+    border-left: 3px solid #e74c3c;
+    padding-left: 0.5em;
+    margin-left: -0.5em;
+}
+
 .flag-color {
     color:#ff1631
 }
@@ -2198,17 +2207,11 @@ div.scenario-text:empty {
 
 .example-table-in-scenario th:last-child {
     width: 0.5em;
-    /*border-right: solid white 1px;*/
-    /*border-top: solid white 1px;*/
-    /*border-bottom: solid white 1px;*/
 }
 
 .example-table-in-scenario td:last-child {
     padding-left: 0.5em;
     width: 1em;
-    /*border-right: solid white 1px;*/
-    /*border-top: solid white 1px;*/
-    /*border-bottom: solid white 1px;*/
 }
 
 .scenario-description {
@@ -2217,8 +2220,6 @@ div.scenario-text:empty {
 
 .scenario-docs .card-body table {
     margin-left: 3em;
-    width: 95%;
-    max-width: 95%;
 }
 
 .context-icon {
@@ -2468,12 +2469,13 @@ div.scenario-text:empty {
 }
 
 .scenario-docs th {
-    font-weight: bold;
+    /*font-weight: bold;*/
+    font-size: 14px;
     color: grey;
-    font-size: 12px;
     padding: 4px;
     border: 0.5px solid grey;
 }
+
 .scenario-docs td {
     padding: 4px;
     border: 0.5px solid grey;
@@ -2507,7 +2509,8 @@ div.scenario-text:empty {
 }
 
 .treeview .badge {
-    background-color: white;
+    background-color: aliceblue;
+    border: lightblue 1px solid;
 }
 
 .toc-title {
@@ -2550,6 +2553,14 @@ div.scenario-text:empty {
     margin-right: 5px; !important;
     font-size: 1em;
     background-color: rgba(238,0,0,0.3);
+}
+
+.copy-button {
+    float: right;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+    margin-right: 5px; !important;
+    font-size: 1em;
 }
 
 .missing-scenario-warning {
@@ -2663,20 +2674,6 @@ td.indented-error-category i {
     /*border-bottom: solid white 1px;*/
 }
 
-.scenario-description {
-    padding-left: 1em;
-}
-
-.scenario-docs .card-body table {
-    margin-left: 3em;
-    width: 95%;
-    max-width: 95%;
-}
-
-.context-icon {
-    padding-right: 1em;
-}
-
 .more-details-result-compromised { background-color: #ff68ff; !important; }
 .more-details-result-error { background-color: #FF6108; !important;  }
 .more-details-result-failure { background-color: #ff1631; !important; }
@@ -2756,4 +2753,8 @@ div.code {
 
 .dataTables_filter input {
     font-weight: normal;
+}
+
+.scenario-docs.card-header.failure a.tagLink {
+    color: bisque;
 }
